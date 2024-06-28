@@ -33,7 +33,7 @@ public class StatsControllerTest {
     @Autowired
     private ObjectMapper mapper;
 
-    @DisplayName("Должен сохранить информацию о том, что к эндпоинту был запрос")
+    @DisplayName("Должен сохранить информацию о том, что к эндпоинту был запрос.")
     @Test
     @SneakyThrows
     public void shouldCreateHit() {
