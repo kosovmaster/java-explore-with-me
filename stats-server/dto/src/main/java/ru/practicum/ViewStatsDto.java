@@ -4,9 +4,10 @@ import lombok.*;
 
 @Getter
 @Setter
-@EqualsAndHashCode
-@ToString
 @Builder
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
 @AllArgsConstructor
 public class ViewStatsDto {
     private String app;
