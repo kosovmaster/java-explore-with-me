@@ -17,11 +17,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateEventAdminRequest {
-    @Size(min = 10, max = 1000)
+    @Size(min = 20, max = 2000)
     private String annotation;
     @Min(1L)
     private Long category;
-    @Size(min = 10, max = 5000)
+    @Size(min = 20, max = 7000)
     private String description;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime eventDate;
