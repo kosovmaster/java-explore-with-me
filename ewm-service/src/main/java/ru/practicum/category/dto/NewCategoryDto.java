@@ -14,6 +14,6 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 public class NewCategoryDto {
     @NotBlank
-    @Length(min = 1, max = 40)
+    @Length(min = 1, max = 50)
     private String name;
 }

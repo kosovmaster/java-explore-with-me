@@ -16,10 +16,10 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class NewUserRequest {
     @NotBlank
-    @Length(min = 1, max = 100)
+    @Length(min = 2, max = 250)
     private String name;
     @NotNull
     @Email
-    @Length(min = 7, max = 50)
+    @Length(min = 6, max = 254)
     private String email;
 }
