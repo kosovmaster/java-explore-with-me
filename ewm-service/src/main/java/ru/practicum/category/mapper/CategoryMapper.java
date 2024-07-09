@@ -16,13 +16,6 @@ public class CategoryMapper {
                 .build();
     }
 
-    public CategoryDto toCategoryDto(Category category) {
-        return CategoryDto.builder()
-                .id(category.getId())
-                .name(category.getName())
-                .build();
-    }
-
     public Category toCategoryFromCategoryDto(CategoryDto categoryDto) {
         return Category.builder()
                 .id(categoryDto.getId())
@@ -30,9 +23,14 @@ public class CategoryMapper {
                 .build();
     }
 
+    public CategoryDto toCategoryDto(Category category) {
+        return CategoryDto.builder()
+                .id(category.getId())
+                .name(category.getName())
+                .build();
+    }
+
     public List<CategoryDto> toCategoryDtoList(List<Category> categoryList) {
-        return categoryList.stream()
-                .map(this::toCategoryDto)
-                .collect(Collectors.toList());
+        return categoryList.stream().map(this::toCategoryDto).collect(Collectors.toList());
     }
 }

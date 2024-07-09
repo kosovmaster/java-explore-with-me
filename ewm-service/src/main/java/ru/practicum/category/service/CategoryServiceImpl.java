@@ -35,21 +35,23 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Transactional
     @Override
+    public void deleteCategory(Long catId) {
+        checkExistsCategory(catId);
+        getExceptionIfEventsAssociateWithCategory(catId);
+
+        categoryRepository.deleteById(catId);
+    }
+
+    @Transactional
+    @Override
     public CategoryDto updateCategory(CategoryDto categoryDto, Long catId) {
         checkExistsCategory(catId);
+
         categoryDto.setId(catId);
         Category category = categoryMapper.toCategoryFromCategoryDto(categoryDto);
         Category updatedCategory = categoryRepository.saveAndFlush(category);
 
         return categoryMapper.toCategoryDto(updatedCategory);
-    }
-
-    @Transactional
-    @Override
-    public void deleteCategory(Long catId) {
-        checkExistsCategory(catId);
-        getExceptionIfEventsAssociateWithCategory(catId);
-        categoryRepository.deleteById(catId);
     }
 
     @Transactional(readOnly = true)
