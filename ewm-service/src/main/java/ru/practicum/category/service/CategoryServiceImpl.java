@@ -66,9 +66,9 @@ public class CategoryServiceImpl implements CategoryService {
     @Transactional(readOnly = true)
     @Override
     public CategoryDto getOneCategoryDto(Long catId) {
-        Category category = getCategory(catId);
-
-        return categoryMapper.toCategoryDto(category);
+        return categoryMapper.toCategoryDto(categoryRepository.findById(catId).orElseThrow(() ->
+                new NotFoundException("Category with id=" + catId + " was not found",
+                        Collections.singletonList("Category id does not exist"))));
     }
 
     private void checkExistsCategory(Long catId) {
@@ -83,11 +83,5 @@ public class CategoryServiceImpl implements CategoryService {
             throw new ConflictException("The category is not empty",
                     Collections.singletonList("No events should be associated with the category"));
         }
-    }
-
-    private Category getCategory(Long catId) {
-        return categoryRepository.findById(catId).orElseThrow(() ->
-                new NotFoundException("Category with id=" + catId + " was not found",
-                        Collections.singletonList("Category id does not exist")));
     }
 }
