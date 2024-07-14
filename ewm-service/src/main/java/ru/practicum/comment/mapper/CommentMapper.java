@@ -19,6 +19,9 @@ import static ru.practicum.constant.Constant.PATTERN_DATE;
 @Component
 public class CommentMapper {
     public CommentDto toCommentDto(Comment comment) {
+        if (comment == null) {
+            return null;
+        }
         return CommentDto.builder()
                 .id(comment.getId())
                 .text(comment.getText())
@@ -30,6 +33,9 @@ public class CommentMapper {
     }
 
     public CommentFullDto toCommentFullDto(Comment comment) {
+        if (comment == null) {
+            return null;
+        }
         return CommentFullDto.builder()
                 .id(comment.getId())
                 .text(comment.getText())
@@ -42,6 +48,9 @@ public class CommentMapper {
     }
 
     public Comment toCommentCreate(NewCommentDto newCommentDto, Event event, User user, Comment comment) {
+        if (newCommentDto == null || event == null || comment == null) {
+            return null;
+        }
         return Comment.builder()
                 .text(newCommentDto.getText())
                 .author(user)
@@ -52,6 +61,9 @@ public class CommentMapper {
     }
 
     public Comment toCommentUpdate(UpdatedCommentDto updatedCommentDto, Comment comment) {
+        if (updatedCommentDto == null || comment == null) {
+            return null;
+        }
         return Comment.builder()
                 .id(comment.getId())
                 .text(updatedCommentDto.getText())
@@ -64,12 +76,18 @@ public class CommentMapper {
     }
 
     public List<CommentDto> toCommentDtoList(List<Comment> comments) {
+        if (comments == null) {
+            return null;
+        }
         return comments.stream()
                 .map(this::toCommentDto)
                 .collect(Collectors.toList());
     }
 
     public List<CommentFullDto> toCommentFullDtoList(List<Comment> comments) {
+        if (comments == null) {
+            return null;
+        }
         return comments.stream()
                 .map(this::toCommentFullDto)
                 .collect(Collectors.toList());
